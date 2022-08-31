@@ -42,6 +42,25 @@
           <?= isset($validation) ? $validation->showError('lname', 'single') : null ?>
         </div>
         <div class="col mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control form-control-sm" name="email" value="<?= isset($sel_data) ? $sel_data['email']  : null ?>" id="email" placeholder="">
+          <?= isset($validation) ? $validation->showError('email', 'single') : null ?>
+        </div>
+        <div class="col mb-3">
+          <label for="gender" class="form-label">Gender</label>
+          <select name="gender" id="gender" class="form-select form-select-sm">
+            <option value="">Select Gender</option>
+            <option value="Male" <?= isset($sel_data) && $sel_data['gender'] === 'Male' ? 'selected' : ''  ?>>Male</option>
+            <option value="Female" <?= isset($sel_data) && $sel_data['gender'] === 'Female' ? 'selected' : ''  ?>>Female</option>
+          </select>
+          <?= isset($validation) ? $validation->showError('gender', 'single') : null ?>
+        </div>
+        <div class="col mb-3">
+          <label for="age" class="form-label">Age</label>
+          <input type="number" class="form-control form-control-sm" name="age" value="<?= isset($sel_data) ? $sel_data['age']  : null ?>" id="age" placeholder="">
+          <?= isset($validation) ? $validation->showError('age', 'single') : null ?>
+        </div>
+        <div class="col mb-3">
           <label for="yearGraduated" class="form-label">Year Graduated</label>
           <input type="number" min="1985" class="form-control form-control-sm" name="year_graduated" value="<?= isset($sel_data) ? $sel_data['year_graduated']  : null ?>" id="yearGraduated" placeholder="">
           <?= isset($validation) ? $validation->showError('year_graduated', 'single') : null ?>
@@ -82,6 +101,9 @@
             <th>#</th>
             <th>Name</th>
             <th>Username</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>Age</th>
             <th>Occupation</th>
             <th>Courses</th>
             <th>Year Graduated</th>
@@ -89,8 +111,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
             <?php foreach ($users as $key => $user) : ?>
+            <tr>
               <td><?= ++$key ?></td>
               <td><?= $user['fname'] . ' ' . substr($user['mname'], 0, 1) . '. ' . $user['lname'] ?></td>
               <td><?= $user['username'] ?></td>
@@ -127,8 +149,8 @@
                   </div>
                 </div>
               </td>
-          </tr>
-        <?php endforeach ?>
+            </tr>
+            <?php endforeach ?>
         </tbody>
       </table>
     </div>
